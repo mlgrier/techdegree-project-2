@@ -21,7 +21,8 @@ class ViewController: UIViewController {
     
     var gameSound: SystemSoundID = 0
     
-    // use a struct for the questions
+    // used a struct for the questions
+    
     let triviaProvider = TriviaProvider()
 
     
