@@ -13,9 +13,9 @@ struct TriviaProvider {
 //        ["Question": "Camels are cannibalistic", "Answer": "False"],
 //        ["Question": "All ducks are birds", "Answer": "True"]
         
-        ["Question": "What is 4 + 1", "Answer": "5"],
-        ["Question": "What is 1 + 1", "Answer": "1"],
-        ["Question": "What is 2 + 1", "Answer": "3"],
-        ["Question": "What is 4 + 4", "Answer": "8"]
+        ["Question": "What is 0 + 1", "Answer": "1"],
+        ["Question": "What is 1 + 1", "Answer": "2"],
+        ["Question": "What is 1 + 2", "Answer": "3"],
+        ["Question": "What is 1 + 3", "Answer": "4"]
     ]
 }
