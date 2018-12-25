@@ -71,6 +71,10 @@ class ViewController: UIViewController {
         
         arrayOfIndex.append(indexOfSelectedQuestion)
         
+        if arrayOfIndex.contains(indexOfSelectedQuestion) {
+            indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: triviaProvider.trivia.count)
+        }
+        
         return indexOfSelectedQuestion
     }
     
@@ -99,6 +103,7 @@ class ViewController: UIViewController {
         questionField.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
         
         print(arrayOfIndex)
+        
     }
     
     func nextRound() {
