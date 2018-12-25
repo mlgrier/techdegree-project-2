@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     
     var gameSound: SystemSoundID = 0
     var buzzerSound: SystemSoundID = 0
+    var currectSound: SystemSoundID = 0
     
     // used a struct for the questions
     
@@ -45,6 +46,7 @@ class ViewController: UIViewController {
         
         loadGameStartSound()
         loadBuzzerSound()
+        loadCorrectSound()
         playGameStartSound()
         displayQuestion()
     }
@@ -57,6 +59,12 @@ class ViewController: UIViewController {
         AudioServicesCreateSystemSoundID(soundUrl as CFURL, &gameSound)
     }
     
+    func loadCorrectSound() {
+        let path = Bundle.main.path(forResource: "CorrectAnswer", ofType: "mp3")
+        let soundUrl = URL(fileURLWithPath: path!)
+        AudioServicesCreateSystemSoundID(soundUrl as CFURL, &currectSound)
+    }
+    
     func loadBuzzerSound() {
         let path = Bundle.main.path(forResource: "buzzersound", ofType: "mp3")
         let soundUrl = URL(fileURLWithPath: path!)
@@ -65,6 +73,10 @@ class ViewController: UIViewController {
     
     func playGameStartSound() {
         AudioServicesPlaySystemSound(gameSound)
+    }
+    
+    func currectAnswerSound() {
+        AudioServicesPlaySystemSound(currectSound)
     }
     
     func wrongAnswerBuzzer() {
@@ -135,6 +147,7 @@ class ViewController: UIViewController {
         
         if (sender === oneButton &&  correctAnswer == "1") || (sender === twoButton && correctAnswer == "2") || (sender === threeButton &&  correctAnswer == "3") || (sender === fourButton &&  correctAnswer == "4") {
             correctQuestions += 1
+            currectAnswerSound()
             questionField.text = "Correct!"
         } else {
             wrongAnswerBuzzer()
