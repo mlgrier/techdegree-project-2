@@ -44,32 +44,27 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadGameStartSound()
-        loadBuzzerSound()
-        loadCorrectSound()
+        loadGameSounds()
         playGameStartSound()
         displayQuestion()
     }
     
     // MARK: - Helpers
     
-    func loadGameStartSound() {
+    func loadGameSounds() {
         let path = Bundle.main.path(forResource: "GameSound", ofType: "wav")
         let soundUrl = URL(fileURLWithPath: path!)
         AudioServicesCreateSystemSoundID(soundUrl as CFURL, &gameSound)
+        
+        let path2 = Bundle.main.path(forResource: "CorrectAnswer", ofType: "mp3")
+        let soundUrl2 = URL(fileURLWithPath: path2!)
+        AudioServicesCreateSystemSoundID(soundUrl2 as CFURL, &currectSound)
+        
+        let path3 = Bundle.main.path(forResource: "buzzersound", ofType: "mp3")
+        let soundUrl3 = URL(fileURLWithPath: path3!)
+        AudioServicesCreateSystemSoundID(soundUrl3 as CFURL, &buzzerSound)
     }
     
-    func loadCorrectSound() {
-        let path = Bundle.main.path(forResource: "CorrectAnswer", ofType: "mp3")
-        let soundUrl = URL(fileURLWithPath: path!)
-        AudioServicesCreateSystemSoundID(soundUrl as CFURL, &currectSound)
-    }
-    
-    func loadBuzzerSound() {
-        let path = Bundle.main.path(forResource: "buzzersound", ofType: "mp3")
-        let soundUrl = URL(fileURLWithPath: path!)
-        AudioServicesCreateSystemSoundID(soundUrl as CFURL, &buzzerSound)
-    }
     
     func playGameStartSound() {
         AudioServicesPlaySystemSound(gameSound)
