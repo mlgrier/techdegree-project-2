@@ -59,36 +59,24 @@ class ViewController: UIViewController {
     }
     
     func displayQuestion() {
-//        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: triviaProvider.trivia.count)
         let otherIndex = randomNumber()
         let questionDictionary = triviaProvider.trivia[otherIndex]
         questionField.text = questionDictionary["Question"]
         playAgainButton.isHidden = true
+        
+        print(arrayOfIndex)
+        print(questionDictionary)
     }
     
     func randomNumber() -> Int {
-        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: triviaProvider.trivia.count)
+        repeat {
+            indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: triviaProvider.trivia.count)
+        } while arrayOfIndex.contains(indexOfSelectedQuestion)
         
         arrayOfIndex.append(indexOfSelectedQuestion)
         
-        if arrayOfIndex.contains(indexOfSelectedQuestion) {
-            indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: triviaProvider.trivia.count)
-        }
-        
         return indexOfSelectedQuestion
     }
-    
-//    func randomNumber(_ superIndex: Int) -> Int {
-//        var superIndex = superIndex
-//        repeat {
-//            superIndex = GKRandomSource.sharedRandom().nextInt(upperBound: 20)
-//        } while arrayOfIndex.contains(indexOfSelectedQuestion)
-//
-//        newIndexNumber = superIndex
-//        arrayOfIndex.append(newIndexNumber)
-//
-//        return newIndexNumber
-//    }
     
     func displayScore() {
         // Hide the answer uttons
@@ -101,9 +89,6 @@ class ViewController: UIViewController {
         playAgainButton.isHidden = false
         
         questionField.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
-        
-        print(arrayOfIndex)
-        
     }
     
     func nextRound() {
@@ -157,6 +142,7 @@ class ViewController: UIViewController {
         
         questionsAsked = 0
         correctQuestions = 0
+        arrayOfIndex = [Int]()
         nextRound()
     }
     
