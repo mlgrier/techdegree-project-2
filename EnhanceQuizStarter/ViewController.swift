@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     var questionsAsked = 0
     var correctQuestions = 0
     var indexOfSelectedQuestion = 0
+    var newIndexNumber = 0
     
     var arrayOfIndex = [Int]()
     
@@ -58,23 +59,23 @@ class ViewController: UIViewController {
     }
     
     func displayQuestion() {
-//        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: triviaProvider.trivia.count)
+        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: triviaProvider.trivia.count)
         let questionDictionary = triviaProvider.trivia[indexOfSelectedQuestion]
         questionField.text = questionDictionary["Question"]
         playAgainButton.isHidden = true
     }
     
-    func randomNumber() -> Int {
-        while arrayOfIndex.contains(indexOfSelectedQuestion) {
-            indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: triviaProvider.trivia.count)
-        }
-        if !arrayOfIndex.contains(indexOfSelectedQuestion) {
-            arrayOfIndex.append(indexOfSelectedQuestion)
-        } else {
-        
-        }
-        return indexOfSelectedQuestion
-    }
+//    func randomNumber(_ superIndex: Int) -> Int {
+//        var superIndex = superIndex
+//        repeat {
+//            superIndex = GKRandomSource.sharedRandom().nextInt(upperBound: 20)
+//        } while arrayOfIndex.contains(indexOfSelectedQuestion)
+//
+//        newIndexNumber = superIndex
+//        arrayOfIndex.append(newIndexNumber)
+//
+//        return newIndexNumber
+//    }
     
     func displayScore() {
         // Hide the answer uttons
