@@ -106,7 +106,7 @@ class ViewController: UIViewController {
         let selectedQuestionDict = triviaProvider.trivia[indexOfSelectedQuestion]
         let correctAnswer = selectedQuestionDict["Answer"]
         
-        if (sender === trueButton &&  correctAnswer == "True") || (sender === falseButton && correctAnswer == "False") {
+        if (sender === oneButton &&  correctAnswer == "1") || (sender === twoButton && correctAnswer == "2") || (sender === threeButton &&  correctAnswer == "3") || (sender === fourButton &&  correctAnswer == "4") {
             correctQuestions += 1
             questionField.text = "Correct!"
         } else {
