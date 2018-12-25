@@ -59,10 +59,19 @@ class ViewController: UIViewController {
     }
     
     func displayQuestion() {
-        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: triviaProvider.trivia.count)
-        let questionDictionary = triviaProvider.trivia[indexOfSelectedQuestion]
+//        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: triviaProvider.trivia.count)
+        let otherIndex = randomNumber()
+        let questionDictionary = triviaProvider.trivia[otherIndex]
         questionField.text = questionDictionary["Question"]
         playAgainButton.isHidden = true
+    }
+    
+    func randomNumber() -> Int {
+        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: triviaProvider.trivia.count)
+        
+        arrayOfIndex.append(indexOfSelectedQuestion)
+        
+        return indexOfSelectedQuestion
     }
     
 //    func randomNumber(_ superIndex: Int) -> Int {
@@ -88,6 +97,8 @@ class ViewController: UIViewController {
         playAgainButton.isHidden = false
         
         questionField.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
+        
+        print(arrayOfIndex)
     }
     
     func nextRound() {
