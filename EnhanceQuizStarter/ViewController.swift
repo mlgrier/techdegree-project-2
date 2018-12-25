@@ -59,20 +59,18 @@ class ViewController: UIViewController {
     }
     
     func displayQuestion() {
-        let otherIndex = randomNumber()
-        let questionDictionary = triviaProvider.trivia[otherIndex]
+        let indexOfQuestion = randomNumber()
+        let questionDictionary = triviaProvider.trivia[indexOfQuestion]
         questionField.text = questionDictionary["Question"]
         playAgainButton.isHidden = true
-        
-        print(arrayOfIndex)
-        print(questionDictionary)
     }
     
     func randomNumber() -> Int {
+        // Loop to check if index has been used
         repeat {
             indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: triviaProvider.trivia.count)
         } while arrayOfIndex.contains(indexOfSelectedQuestion)
-        
+        // Add index to array
         arrayOfIndex.append(indexOfSelectedQuestion)
         
         return indexOfSelectedQuestion

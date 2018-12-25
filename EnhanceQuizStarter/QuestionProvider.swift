@@ -19,6 +19,10 @@ struct TriviaProvider {
         ["Question": "What is 7 - 6", "Answer": "1"],
         ["Question": "What is 22 - 20", "Answer": "2"],
         ["Question": "What is 33 - 30", "Answer": "3"],
-        ["Question": "What is 100 - 96", "Answer": "4"]
+        ["Question": "What is 100 - 96", "Answer": "4"],
+        ["Question": "What is 29 - 28", "Answer": "1"],
+        ["Question": "What is 8 - 6", "Answer": "2"],
+        ["Question": "What is 17 - 14", "Answer": "3"],
+        ["Question": "What is 48 - 44", "Answer": "4"]
     ]
 }
