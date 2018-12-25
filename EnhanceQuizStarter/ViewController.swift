@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     var correctQuestions = 0
     var indexOfSelectedQuestion = 0
     
+    var arrayOfIndex = [Int]()
+    
     var gameSound: SystemSoundID = 0
     
     // used a struct for the questions
@@ -56,10 +58,22 @@ class ViewController: UIViewController {
     }
     
     func displayQuestion() {
-        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: triviaProvider.trivia.count)
+//        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: triviaProvider.trivia.count)
         let questionDictionary = triviaProvider.trivia[indexOfSelectedQuestion]
         questionField.text = questionDictionary["Question"]
         playAgainButton.isHidden = true
+    }
+    
+    func randomNumber() -> Int {
+        while arrayOfIndex.contains(indexOfSelectedQuestion) {
+            indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: triviaProvider.trivia.count)
+        }
+        if !arrayOfIndex.contains(indexOfSelectedQuestion) {
+            arrayOfIndex.append(indexOfSelectedQuestion)
+        } else {
+        
+        }
+        return indexOfSelectedQuestion
     }
     
     func displayScore() {
