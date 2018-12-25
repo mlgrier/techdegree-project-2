@@ -124,7 +124,7 @@ class ViewController: UIViewController {
             correctQuestions += 1
             questionField.text = "Correct!"
         } else {
-            questionField.text = "Sorry, wrong answer!"
+            questionField.text = "Sorry, wrong answer! \nThe correct answer is \(correctAnswer ?? "error")."
         }
         
         loadNextRound(delay: 2)
