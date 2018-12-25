@@ -29,8 +29,10 @@ class ViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var questionField: UILabel!
-    @IBOutlet weak var trueButton: UIButton!
-    @IBOutlet weak var falseButton: UIButton!
+    @IBOutlet weak var oneButton: UIButton!
+    @IBOutlet weak var twoButton: UIButton!
+    @IBOutlet weak var threeButton: UIButton!
+    @IBOutlet weak var fourButton: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
 
     override func viewDidLoad() {
@@ -62,8 +64,10 @@ class ViewController: UIViewController {
     
     func displayScore() {
         // Hide the answer uttons
-        trueButton.isHidden = true
-        falseButton.isHidden = true
+        oneButton.isHidden = true
+        twoButton.isHidden = true
+        threeButton.isHidden = true
+        fourButton.isHidden = true
         
         // Display play again button
         playAgainButton.isHidden = false
@@ -115,8 +119,10 @@ class ViewController: UIViewController {
     
     @IBAction func playAgain(_ sender: UIButton) {
         // Show the answer buttons
-        trueButton.isHidden = false
-        falseButton.isHidden = false
+        oneButton.isHidden = false
+        twoButton.isHidden = false
+        threeButton.isHidden = false
+        fourButton.isHidden = false
         
         questionsAsked = 0
         correctQuestions = 0
