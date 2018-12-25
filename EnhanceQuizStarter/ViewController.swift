@@ -74,7 +74,7 @@ class ViewController: UIViewController {
         AudioServicesPlaySystemSound(currectSound)
     }
     
-    func wrongAnswerBuzzer() {
+    func wrongAnswerSound() {
        AudioServicesPlaySystemSound(buzzerSound)
     }
     
@@ -145,11 +145,11 @@ class ViewController: UIViewController {
             currectAnswerSound()
             questionField.text = "Correct!"
         } else {
-            wrongAnswerBuzzer()
+            wrongAnswerSound()
             questionField.text = "Sorry, wrong answer! \nThe correct answer is \(correctAnswer ?? "error")."
         }
         
-        loadNextRound(delay: 2)
+        loadNextRound(delay: 3)
     }
     
     
