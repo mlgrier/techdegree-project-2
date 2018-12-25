@@ -10,6 +10,7 @@ import UIKit
 import GameKit
 import AudioToolbox
 
+
 class ViewController: UIViewController {
     
     // MARK: - Properties
@@ -23,6 +24,7 @@ class ViewController: UIViewController {
     var arrayOfIndex = [Int]()
     
     var gameSound: SystemSoundID = 0
+    var buzzerSound: SystemSoundID = 0
     
     // used a struct for the questions
     
@@ -42,6 +44,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         loadGameStartSound()
+        loadBuzzerSound()
         playGameStartSound()
         displayQuestion()
     }
@@ -54,8 +57,18 @@ class ViewController: UIViewController {
         AudioServicesCreateSystemSoundID(soundUrl as CFURL, &gameSound)
     }
     
+    func loadBuzzerSound() {
+        let path = Bundle.main.path(forResource: "buzzersound", ofType: "mp3")
+        let soundUrl = URL(fileURLWithPath: path!)
+        AudioServicesCreateSystemSoundID(soundUrl as CFURL, &buzzerSound)
+    }
+    
     func playGameStartSound() {
         AudioServicesPlaySystemSound(gameSound)
+    }
+    
+    func wrongAnswerBuzzer() {
+       AudioServicesPlaySystemSound(buzzerSound)
     }
     
     func displayQuestion() {
@@ -124,6 +137,7 @@ class ViewController: UIViewController {
             correctQuestions += 1
             questionField.text = "Correct!"
         } else {
+            wrongAnswerBuzzer()
             questionField.text = "Sorry, wrong answer! \nThe correct answer is \(correctAnswer ?? "error")."
         }
         
