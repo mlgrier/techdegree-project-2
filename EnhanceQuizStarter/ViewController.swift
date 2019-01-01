@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     
     // used a struct for the questions
     
-    let triviaProvider = TriviaProvider()
+    let triviaProvider = TriviaProvider(question: <#String#>, answer: <#String#>)
 
     
     // MARK: - Outlets
