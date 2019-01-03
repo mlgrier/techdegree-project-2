@@ -31,10 +31,6 @@ class ViewController: UIViewController {
     // used a struct for the questions
     
     var question = Questions(question: "", answer: "")
-    
-    //var question = Questions(question: questionsAndAnswers[0]["Question"] ?? "error", answer: questionsAndAnswers[0]["Answer"] ?? "error")
-    
-    //var question = Questions(question: questionsProvider, answer: questionsProvider)
 
     
     // MARK: - Outlets
@@ -83,7 +79,7 @@ class ViewController: UIViewController {
        AudioServicesPlaySystemSound(buzzerSound)
     }
     
-    func randomNumber() -> Int {
+    func randomNumber() {
         // Loop to check if index has been used
         repeat {
             indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: questionsAndAnswers.count)
@@ -93,17 +89,11 @@ class ViewController: UIViewController {
         
         question = Questions(question: questionsAndAnswers[indexOfSelectedQuestion]["Question"] ?? "error", answer: questionsAndAnswers[indexOfSelectedQuestion]["Answer"] ?? "error")
         
-        return indexOfSelectedQuestion
     }
     
     func displayQuestion() {
-        indexOfQuestion = randomNumber()
-        
-        let questionDictionary = question.question
-        print(questionDictionary)
-        
-        //triviaProvider.trivia[indexOfQuestion]
-        questionField.text = questionDictionary
+        randomNumber()
+        questionField.text = question.question
         playAgainButton.isHidden = true
     }
     
@@ -148,12 +138,8 @@ class ViewController: UIViewController {
         // Increment the questions asked counter
         questionsAsked += 1
         
-        let selectedQuestionDict = question.answer
+        let correctAnswer = question.answer
         
-        //triviaProvider.trivia[indexOfSelectedQuestion]
-        let correctAnswer = selectedQuestionDict
-        
-        //selectedQuestionDict["Answer"]
         
         if (sender === oneButton &&  correctAnswer == "1") || (sender === twoButton && correctAnswer == "2") || (sender === threeButton &&  correctAnswer == "3") || (sender === fourButton &&  correctAnswer == "4") {
             correctQuestions += 1
