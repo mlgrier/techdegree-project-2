@@ -1,5 +1,5 @@
 //
-//  Question.swift
+//  QuestionsAndAnswers.swift
 //  EnhanceQuizStarter
 //
 //  Created by Marco Grier on 12/24/18.
@@ -7,7 +7,7 @@
 //
 
 
-let trivia: [[String : String]] = [
+let questionsAndAnswers: [[String : String]] = [
     ["Question": "What is 0 + 1", "Answer": "1"],
     ["Question": "What is 1 + 1", "Answer": "2"],
     ["Question": "What is 1 + 2", "Answer": "3"],
@@ -24,4 +24,5 @@ let trivia: [[String : String]] = [
     ["Question": "What is 8 - 6", "Answer": "2"],
     ["Question": "What is 17 - 14", "Answer": "3"],
     ["Question": "What is 48 - 44", "Answer": "4"]
-]
+ ]
+

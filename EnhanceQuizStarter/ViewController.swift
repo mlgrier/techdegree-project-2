@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     var correctQuestions = 0
     var indexOfSelectedQuestion = 0
     var newIndexNumber = 0
+    var indexOfQuestion = 0
     
     var arrayOfIndex = [Int]()
     
@@ -29,7 +30,11 @@ class ViewController: UIViewController {
     
     // used a struct for the questions
     
-    let triviaProvider = TriviaProvider(question: <#String#>, answer: <#String#>)
+    var question = Questions(question: "", answer: "")
+    
+    //var question = Questions(question: questionsAndAnswers[0]["Question"] ?? "error", answer: questionsAndAnswers[0]["Answer"] ?? "error")
+    
+    //var question = Questions(question: questionsProvider, answer: questionsProvider)
 
     
     // MARK: - Outlets
@@ -78,22 +83,28 @@ class ViewController: UIViewController {
        AudioServicesPlaySystemSound(buzzerSound)
     }
     
-    func displayQuestion() {
-        let indexOfQuestion = randomNumber()
-        let questionDictionary = triviaProvider.trivia[indexOfQuestion]
-        questionField.text = questionDictionary["Question"]
-        playAgainButton.isHidden = true
-    }
-    
     func randomNumber() -> Int {
         // Loop to check if index has been used
         repeat {
-            indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: triviaProvider.trivia.count)
+            indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: questionsAndAnswers.count)
         } while arrayOfIndex.contains(indexOfSelectedQuestion)
         // Add index to array
         arrayOfIndex.append(indexOfSelectedQuestion)
         
+        question = Questions(question: questionsAndAnswers[indexOfSelectedQuestion]["Question"] ?? "error", answer: questionsAndAnswers[indexOfSelectedQuestion]["Answer"] ?? "error")
+        
         return indexOfSelectedQuestion
+    }
+    
+    func displayQuestion() {
+        indexOfQuestion = randomNumber()
+        
+        let questionDictionary = question.question
+        print(questionDictionary)
+        
+        //triviaProvider.trivia[indexOfQuestion]
+        questionField.text = questionDictionary
+        playAgainButton.isHidden = true
     }
     
     func displayScore() {
@@ -137,8 +148,12 @@ class ViewController: UIViewController {
         // Increment the questions asked counter
         questionsAsked += 1
         
-        let selectedQuestionDict = triviaProvider.trivia[indexOfSelectedQuestion]
-        let correctAnswer = selectedQuestionDict["Answer"]
+        let selectedQuestionDict = question.answer
+        
+        //triviaProvider.trivia[indexOfSelectedQuestion]
+        let correctAnswer = selectedQuestionDict
+        
+        //selectedQuestionDict["Answer"]
         
         if (sender === oneButton &&  correctAnswer == "1") || (sender === twoButton && correctAnswer == "2") || (sender === threeButton &&  correctAnswer == "3") || (sender === fourButton &&  correctAnswer == "4") {
             correctQuestions += 1
@@ -146,7 +161,7 @@ class ViewController: UIViewController {
             questionField.text = "Correct!"
         } else {
             wrongAnswerSound()
-            questionField.text = "Sorry, wrong answer! \nThe correct answer is \(correctAnswer ?? "error")."
+            questionField.text = "Sorry, wrong answer! \nThe correct answer is \(correctAnswer)."
         }
         
         loadNextRound(delay: 3)
