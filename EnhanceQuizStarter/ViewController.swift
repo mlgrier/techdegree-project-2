@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     
     // used a struct for the questions
     
-    var question = Questions(question: "", answer: "")
+    var questionAndAnswer = Questions(question: "", answer: "")
 
     
     // MARK: - Outlets
@@ -87,13 +87,13 @@ class ViewController: UIViewController {
         // Add index to array
         arrayOfIndex.append(indexOfSelectedQuestion)
         
-        question = Questions(question: questionsAndAnswers[indexOfSelectedQuestion]["Question"] ?? "error", answer: questionsAndAnswers[indexOfSelectedQuestion]["Answer"] ?? "error")
+        questionAndAnswer = Questions(question: questionsAndAnswers[indexOfSelectedQuestion]["Question"] ?? "error", answer: questionsAndAnswers[indexOfSelectedQuestion]["Answer"] ?? "error")
         
     }
     
     func displayQuestion() {
         randomNumber()
-        questionField.text = question.question
+        questionField.text = questionAndAnswer.question
         playAgainButton.isHidden = true
     }
     
@@ -138,7 +138,7 @@ class ViewController: UIViewController {
         // Increment the questions asked counter
         questionsAsked += 1
         
-        let correctAnswer = question.answer
+        let correctAnswer = questionAndAnswer.answer
         
         
         if (sender === oneButton &&  correctAnswer == "1") || (sender === twoButton && correctAnswer == "2") || (sender === threeButton &&  correctAnswer == "3") || (sender === fourButton &&  correctAnswer == "4") {
