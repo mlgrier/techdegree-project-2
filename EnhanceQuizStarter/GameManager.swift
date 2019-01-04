@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import GameKit
 
 let questionsAndAnswers: [[String : String]] = [
     ["Question": "What is 0 + 1", "Answer": "1"],
@@ -27,6 +28,31 @@ let questionsAndAnswers: [[String : String]] = [
     ["Question": "What is 48 - 44", "Answer": "4"]
 ]
 
+func questionAndAnswerGenerator() {
+    var question: String
+    let answer: String
+    var indexOfSelectedQuestion: Int
+    var arrayOfIndex = [Int]()
+    // Loop to check if index has been used
+    repeat {
+        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: questionsAndAnswers.count)
+    } while arrayOfIndex.contains(indexOfSelectedQuestion)
+    // Add index to array
+    arrayOfIndex.append(indexOfSelectedQuestion)
+    
+    //NEED TO PULL THE QUESTION AND ANSWER FROM DICT THEN PASS TO STRUCT
+    
+    question = questionsAndAnswers[indexOfSelectedQuestion]["Question"] ?? "error"
+    answer = questionsAndAnswers[indexOfSelectedQuestion]["Answer"] ?? "error"
+    
+    let quiz = Questions(question: question, answer: answer)
+    
+    //NEED TO RETURN THIS
+//    var questionAndAnswer = Questions(question: questionsAndAnswers[indexOfSelectedQuestion]["Question"] ?? "error", answer: questionsAndAnswers[indexOfSelectedQuestion]["Answer"] ?? "error")
+    
+}
+
+
 func rightOrWrongAnwserCheck(sender: UIButton) {
     // Increment the questions asked counter
     var questionsAsked = 0
@@ -46,17 +72,4 @@ func rightOrWrongAnwserCheck(sender: UIButton) {
     }
 }
 
-func randomNumber() {
-    
-    var indexOfSelectedQuestion = 0
-    var arrayOfIndex = [Int]()
-    // Loop to check if index has been used
-    repeat {
-        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: questionsAndAnswers.count)
-    } while arrayOfIndex.contains(indexOfSelectedQuestion)
-    // Add index to array
-    arrayOfIndex.append(indexOfSelectedQuestion)
-    
-    questionAndAnswer = Questions(question: questionsAndAnswers[indexOfSelectedQuestion]["Question"] ?? "error", answer: questionsAndAnswers[indexOfSelectedQuestion]["Answer"] ?? "error")
-    
-}
+

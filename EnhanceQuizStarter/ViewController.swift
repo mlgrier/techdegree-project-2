@@ -7,7 +7,6 @@
 //  Copyright © 2018 Treehouse. All rights reserved.
 //
 import UIKit
-import GameKit
 import AudioToolbox
 
 class ViewController: UIViewController {
@@ -15,21 +14,10 @@ class ViewController: UIViewController {
     // MARK: - Properties
     
     let questionsPerRound = 4
-    
-    
-    
     var newIndexNumber = 0
     var indexOfQuestion = 0
     
-    
-    
-    //    var gameSound: SystemSoundID = 0
-    //    var buzzerSound: SystemSoundID = 0
-    //    var currectSound: SystemSoundID = 0
-    
     // used a struct for the questions
-    
-    var questionAndAnswer = Questions(question: "", answer: "")
     
     
     // MARK: - Outlets
@@ -92,8 +80,6 @@ class ViewController: UIViewController {
             self.nextRound()
         }
     }
-    
-    
     
     // MARK: - Actions
     
