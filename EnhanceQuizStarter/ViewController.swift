@@ -10,7 +10,6 @@ import UIKit
 import GameKit
 import AudioToolbox
 
-
 class ViewController: UIViewController {
     
     // MARK: - Properties
@@ -24,9 +23,9 @@ class ViewController: UIViewController {
     
     var arrayOfIndex = [Int]()
     
-    var gameSound: SystemSoundID = 0
-    var buzzerSound: SystemSoundID = 0
-    var currectSound: SystemSoundID = 0
+//    var gameSound: SystemSoundID = 0
+//    var buzzerSound: SystemSoundID = 0
+//    var currectSound: SystemSoundID = 0
     
     // used a struct for the questions
     
@@ -52,33 +51,7 @@ class ViewController: UIViewController {
     
     // MARK: - Helpers
     
-    func loadGameSounds() {
-        let path = Bundle.main.path(forResource: "GameSound", ofType: "wav")
-        let soundUrl = URL(fileURLWithPath: path!)
-        AudioServicesCreateSystemSoundID(soundUrl as CFURL, &gameSound)
-        
-        let path2 = Bundle.main.path(forResource: "CorrectAnswer", ofType: "mp3")
-        let soundUrl2 = URL(fileURLWithPath: path2!)
-        AudioServicesCreateSystemSoundID(soundUrl2 as CFURL, &currectSound)
-        
-        let path3 = Bundle.main.path(forResource: "buzzersound", ofType: "mp3")
-        let soundUrl3 = URL(fileURLWithPath: path3!)
-        AudioServicesCreateSystemSoundID(soundUrl3 as CFURL, &buzzerSound)
-    }
-    
-    
-    func playGameStartSound() {
-        AudioServicesPlaySystemSound(gameSound)
-    }
-    
-    func currectAnswerSound() {
-        AudioServicesPlaySystemSound(currectSound)
-    }
-    
-    func wrongAnswerSound() {
-       AudioServicesPlaySystemSound(buzzerSound)
-    }
-    
+
     func randomNumber() {
         // Loop to check if index has been used
         repeat {
@@ -132,14 +105,11 @@ class ViewController: UIViewController {
         }
     }
     
-    // MARK: - Actions
-    
-    @IBAction func checkAnswer(_ sender: UIButton) {
+    func rightOrWrongAnwserCheck(sender: UIButton) {
         // Increment the questions asked counter
         questionsAsked += 1
         
         let correctAnswer = questionAndAnswer.answer
-        
         
         if (sender === oneButton &&  correctAnswer == "1") || (sender === twoButton && correctAnswer == "2") || (sender === threeButton &&  correctAnswer == "3") || (sender === fourButton &&  correctAnswer == "4") {
             correctQuestions += 1
@@ -149,7 +119,13 @@ class ViewController: UIViewController {
             wrongAnswerSound()
             questionField.text = "Sorry, wrong answer! \nThe correct answer is \(correctAnswer)."
         }
-        
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func checkAnswer(_ sender: UIButton) {
+        let buttonPushed = sender
+        rightOrWrongAnwserCheck(sender: buttonPushed)
         loadNextRound(delay: 3)
     }
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3110644521DED94900108D7E /* GameSounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110644421DED94900108D7E /* GameSounds.swift */; };
 		318F1F7F21DB9C9C0055CBED /* QuestionsStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318F1F7E21DB9C9C0055CBED /* QuestionsStruct.swift */; };
 		31BA478821D2749900F4AE6D /* buzzersound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 31BA478721D2749900F4AE6D /* buzzersound.mp3 */; };
 		31BA478A21D2761100F4AE6D /* CorrectAnswer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 31BA478921D2761100F4AE6D /* CorrectAnswer.mp3 */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3110644421DED94900108D7E /* GameSounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSounds.swift; sourceTree = "<group>"; };
 		318F1F7E21DB9C9C0055CBED /* QuestionsStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsStruct.swift; sourceTree = "<group>"; };
 		31BA478721D2749900F4AE6D /* buzzersound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = buzzersound.mp3; sourceTree = "<group>"; };
 		31BA478921D2761100F4AE6D /* CorrectAnswer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CorrectAnswer.mp3; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				972A72B22056F06C0059EF4A /* ViewController.swift */,
 				31D9C0DA21D19D11003B1A7F /* QuestionsAndAnswers.swift */,
 				318F1F7E21DB9C9C0055CBED /* QuestionsStruct.swift */,
+				3110644421DED94900108D7E /* GameSounds.swift */,
 				972A72B42056F06C0059EF4A /* Main.storyboard */,
 				972A72B72056F06C0059EF4A /* Assets.xcassets */,
 				972A72B92056F06C0059EF4A /* LaunchScreen.storyboard */,
@@ -159,6 +162,7 @@
 				972A72B32056F06C0059EF4A /* ViewController.swift in Sources */,
 				31D9C0DB21D19D11003B1A7F /* QuestionsAndAnswers.swift in Sources */,
 				972A72B12056F06C0059EF4A /* AppDelegate.swift in Sources */,
+				3110644521DED94900108D7E /* GameSounds.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
