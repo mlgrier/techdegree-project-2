@@ -23,10 +23,6 @@ class ViewController: UIViewController {
     
     var arrayOfIndex = [Int]()
     
-//    var gameSound: SystemSoundID = 0
-//    var buzzerSound: SystemSoundID = 0
-//    var currectSound: SystemSoundID = 0
-    
     // used a struct for the questions
     
     var questionAndAnswer = Questions(question: "", answer: "")
