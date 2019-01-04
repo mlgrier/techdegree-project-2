@@ -52,7 +52,7 @@ class ViewController: UIViewController {
     // MARK: - Helpers
     
 
-    func randomNumber() {
+    func randomQuestionGenerator() {
         // Loop to check if index has been used
         repeat {
             indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: questionsAndAnswers.count)
@@ -65,7 +65,7 @@ class ViewController: UIViewController {
     }
     
     func displayQuestion() {
-        randomNumber()
+        randomQuestionGenerator()
         questionField.text = questionAndAnswer.question
         playAgainButton.isHidden = true
     }
