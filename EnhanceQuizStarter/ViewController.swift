@@ -1,3 +1,4 @@
+
 //
 //  ViewController.swift
 //  EnhanceQuizStarter
@@ -5,7 +6,6 @@
 //  Created by Pasan Premaratne on 3/12/18.
 //  Copyright © 2018 Treehouse. All rights reserved.
 //
-
 import UIKit
 import GameKit
 import AudioToolbox
@@ -15,18 +15,22 @@ class ViewController: UIViewController {
     // MARK: - Properties
     
     let questionsPerRound = 4
-    var questionsAsked = 0
-    var correctQuestions = 0
-    var indexOfSelectedQuestion = 0
+    
+    
+    
     var newIndexNumber = 0
     var indexOfQuestion = 0
     
-    var arrayOfIndex = [Int]()
+    
+    
+    //    var gameSound: SystemSoundID = 0
+    //    var buzzerSound: SystemSoundID = 0
+    //    var currectSound: SystemSoundID = 0
     
     // used a struct for the questions
     
     var questionAndAnswer = Questions(question: "", answer: "")
-
+    
     
     // MARK: - Outlets
     
@@ -36,7 +40,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var threeButton: UIButton!
     @IBOutlet weak var fourButton: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,21 +51,9 @@ class ViewController: UIViewController {
     
     // MARK: - Helpers
     
-
-    func randomQuestionGenerator() {
-        // Loop to check if index has been used
-        repeat {
-            indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: questionsAndAnswers.count)
-        } while arrayOfIndex.contains(indexOfSelectedQuestion)
-        // Add index to array
-        arrayOfIndex.append(indexOfSelectedQuestion)
-        
-        questionAndAnswer = Questions(question: questionsAndAnswers[indexOfSelectedQuestion]["Question"] ?? "error", answer: questionsAndAnswers[indexOfSelectedQuestion]["Answer"] ?? "error")
-        
-    }
     
     func displayQuestion() {
-        randomQuestionGenerator()
+        randomNumber()
         questionField.text = questionAndAnswer.question
         playAgainButton.isHidden = true
     }
@@ -101,21 +93,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func rightOrWrongAnwserCheck(sender: UIButton) {
-        // Increment the questions asked counter
-        questionsAsked += 1
-        
-        let correctAnswer = questionAndAnswer.answer
-        
-        if (sender === oneButton &&  correctAnswer == "1") || (sender === twoButton && correctAnswer == "2") || (sender === threeButton &&  correctAnswer == "3") || (sender === fourButton &&  correctAnswer == "4") {
-            correctQuestions += 1
-            currectAnswerSound()
-            questionField.text = "Correct!"
-        } else {
-            wrongAnswerSound()
-            questionField.text = "Sorry, wrong answer! \nThe correct answer is \(correctAnswer)."
-        }
-    }
+    
     
     // MARK: - Actions
     
@@ -139,6 +117,5 @@ class ViewController: UIViewController {
         nextRound()
     }
     
-
+    
 }
-

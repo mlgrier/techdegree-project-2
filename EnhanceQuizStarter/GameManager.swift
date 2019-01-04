@@ -1,0 +1,62 @@
+//
+//  GameManager.swift
+//  EnhanceQuizStarter
+//
+//  Created by Marco Grier on 1/4/19.
+//  Copyright © 2019 Treehouse. All rights reserved.
+//
+
+import Foundation
+
+let questionsAndAnswers: [[String : String]] = [
+    ["Question": "What is 0 + 1", "Answer": "1"],
+    ["Question": "What is 1 + 1", "Answer": "2"],
+    ["Question": "What is 1 + 2", "Answer": "3"],
+    ["Question": "What is 1 + 3", "Answer": "4"],
+    ["Question": "What is 9 - 8", "Answer": "1"],
+    ["Question": "What is 12 - 10", "Answer": "2"],
+    ["Question": "What is 13 - 10", "Answer": "3"],
+    ["Question": "What is 14 - 10", "Answer": "4"],
+    ["Question": "What is 7 - 6", "Answer": "1"],
+    ["Question": "What is 22 - 20", "Answer": "2"],
+    ["Question": "What is 33 - 30", "Answer": "3"],
+    ["Question": "What is 100 - 96", "Answer": "4"],
+    ["Question": "What is 29 - 28", "Answer": "1"],
+    ["Question": "What is 8 - 6", "Answer": "2"],
+    ["Question": "What is 17 - 14", "Answer": "3"],
+    ["Question": "What is 48 - 44", "Answer": "4"]
+]
+
+func rightOrWrongAnwserCheck(sender: UIButton) {
+    // Increment the questions asked counter
+    var questionsAsked = 0
+    var correctQuestions = 0
+    
+    questionsAsked += 1
+    
+    let correctAnswer = questionAndAnswer.answer
+    
+    if (sender === oneButton &&  correctAnswer == "1") || (sender === twoButton && correctAnswer == "2") || (sender === threeButton &&  correctAnswer == "3") || (sender === fourButton &&  correctAnswer == "4") {
+        correctQuestions += 1
+        currectAnswerSound()
+        questionField.text = "Correct!"
+    } else {
+        wrongAnswerSound()
+        questionField.text = "Sorry, wrong answer! \nThe correct answer is \(correctAnswer)."
+    }
+}
+
+func randomNumber() {
+    
+    var indexOfSelectedQuestion = 0
+    var arrayOfIndex = [Int]()
+    // Loop to check if index has been used
+    repeat {
+        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: questionsAndAnswers.count)
+    } while arrayOfIndex.contains(indexOfSelectedQuestion)
+    // Add index to array
+    arrayOfIndex.append(indexOfSelectedQuestion)
+    
+    questionAndAnswer = Questions(question: questionsAndAnswers[indexOfSelectedQuestion]["Question"] ?? "error", answer: questionsAndAnswers[indexOfSelectedQuestion]["Answer"] ?? "error")
+    
+}
