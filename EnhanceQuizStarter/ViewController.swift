@@ -32,17 +32,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadGameSounds()
-        playGameStartSound()
+        playSoundFile(soundName: "GameSound", soundFileType: "wav")
         displayQuestion()
+        
     }
     
     // MARK: - Helpers
     
     
     func displayQuestion() {
-        randomNumber()
-        questionField.text = questionAndAnswer.question
+        let theQuestion = questionAndAnswerGenerator()
+        questionField.text = theQuestion.question
         playAgainButton.isHidden = true
     }
     

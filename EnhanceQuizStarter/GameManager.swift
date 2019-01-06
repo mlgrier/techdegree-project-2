@@ -9,12 +9,17 @@
 import Foundation
 import GameKit
 
+
+    
 struct Questions {
     var question: String
     var answer: String
 }
 
 var quiz = Questions(question: "", answer: "")
+var correctQuestions = 0
+var questionsAsked = 0
+var arrayOfIndex = [Int]()
 
 
 let questionsAndAnswers: [[String : String]] = [
@@ -37,14 +42,17 @@ let questionsAndAnswers: [[String : String]] = [
 ]
 
 func questionAndAnswerGenerator() -> Questions {
+    
     var question: String
     let answer: String
     var indexOfSelectedQuestion: Int
-    var arrayOfIndex = [Int]()
+    
+    
     // Loop to check if index has been used
     repeat {
         indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: questionsAndAnswers.count)
     } while arrayOfIndex.contains(indexOfSelectedQuestion)
+    
     // Add index to array
     arrayOfIndex.append(indexOfSelectedQuestion)
     
@@ -59,24 +67,25 @@ func questionAndAnswerGenerator() -> Questions {
     
 }
 
+extension ViewController {
 
 func rightOrWrongAnwserCheck(sender: UIButton) {
     // Increment the questions asked counter
-    var questionsAsked = 0
-    var correctQuestions = 0
     
     questionsAsked += 1
     
     let correctAnswer = quiz.answer
     
-    if (sender === oneButton &&  correctAnswer == "1") || (sender === twoButton && correctAnswer == "2") || (sender === threeButton &&  correctAnswer == "3") || (sender === fourButton &&  correctAnswer == "4") {
+    if (sender === oneButton && correctAnswer == "1") || (sender === twoButton && correctAnswer == "2") || (sender === threeButton && correctAnswer == "3") || (sender === fourButton && correctAnswer == "4") {
         correctQuestions += 1
-        currectAnswerSound()
+        playSoundFile(soundName: "CorrectAnswer", soundFileType: "mp3")
         questionField.text = "Correct!"
     } else {
-        wrongAnswerSound()
+        playSoundFile(soundName: "buzzersound", soundFileType: "mp3")
         questionField.text = "Sorry, wrong answer! \nThe correct answer is \(correctAnswer)."
     }
 }
+}
+
 
 
