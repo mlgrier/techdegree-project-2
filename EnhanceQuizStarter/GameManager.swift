@@ -9,8 +9,6 @@
 import Foundation
 import GameKit
 
-
-    
 struct Questions {
     var question: String
     var answer: String
@@ -68,23 +66,23 @@ func questionAndAnswerGenerator() -> Questions {
 }
 
 extension ViewController {
-
-func rightOrWrongAnwserCheck(sender: UIButton) {
-    // Increment the questions asked counter
     
-    questionsAsked += 1
-    
-    let correctAnswer = quiz.answer
-    
-    if (sender === oneButton && correctAnswer == "1") || (sender === twoButton && correctAnswer == "2") || (sender === threeButton && correctAnswer == "3") || (sender === fourButton && correctAnswer == "4") {
-        correctQuestions += 1
-        playSoundFile(soundName: "CorrectAnswer", soundFileType: "mp3")
-        questionField.text = "Correct!"
-    } else {
-        playSoundFile(soundName: "buzzersound", soundFileType: "mp3")
-        questionField.text = "Sorry, wrong answer! \nThe correct answer is \(correctAnswer)."
+    func rightOrWrongAnwserCheck(sender: UIButton) {
+        
+        // Increment the questions asked counter
+        questionsAsked += 1
+        
+        let correctAnswer = quiz.answer
+        
+        if (sender === oneButton && correctAnswer == "1") || (sender === twoButton && correctAnswer == "2") || (sender === threeButton && correctAnswer == "3") || (sender === fourButton && correctAnswer == "4") {
+            correctQuestions += 1
+            playSoundFile(soundName: "CorrectAnswer", soundFileType: "mp3")
+            questionField.text = "Correct!"
+        } else {
+            playSoundFile(soundName: "buzzersound", soundFileType: "mp3")
+            questionField.text = "Sorry, wrong answer! \nThe correct answer is \(correctAnswer)."
+        }
     }
-}
 }
 
 
