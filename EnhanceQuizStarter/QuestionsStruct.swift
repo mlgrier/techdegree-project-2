@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct Questions {
-    var question: String
-    var answer: String
-    
-//    init(question: String, answer: String) {
-//        self.question = question
-//        self.answer = answer
-//    }
-    
-}
+//struct Questions {
+//    var question: String
+//    var answer: String
+//    
+////    init(question: String, answer: String) {
+////        self.question = question
+////        self.answer = answer
+////    }
+//    
+//}
 

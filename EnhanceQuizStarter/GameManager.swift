@@ -9,6 +9,14 @@
 import Foundation
 import GameKit
 
+struct Questions {
+    var question: String
+    var answer: String
+}
+
+var quiz = Questions(question: "", answer: "")
+
+
 let questionsAndAnswers: [[String : String]] = [
     ["Question": "What is 0 + 1", "Answer": "1"],
     ["Question": "What is 1 + 1", "Answer": "2"],
@@ -28,7 +36,7 @@ let questionsAndAnswers: [[String : String]] = [
     ["Question": "What is 48 - 44", "Answer": "4"]
 ]
 
-func questionAndAnswerGenerator() {
+func questionAndAnswerGenerator() -> Questions {
     var question: String
     let answer: String
     var indexOfSelectedQuestion: Int
@@ -45,10 +53,9 @@ func questionAndAnswerGenerator() {
     question = questionsAndAnswers[indexOfSelectedQuestion]["Question"] ?? "error"
     answer = questionsAndAnswers[indexOfSelectedQuestion]["Answer"] ?? "error"
     
-    let quiz = Questions(question: question, answer: answer)
+    quiz = Questions(question: question, answer: answer)
     
-    //NEED TO RETURN THIS
-//    var questionAndAnswer = Questions(question: questionsAndAnswers[indexOfSelectedQuestion]["Question"] ?? "error", answer: questionsAndAnswers[indexOfSelectedQuestion]["Answer"] ?? "error")
+    return quiz
     
 }
 
@@ -60,7 +67,7 @@ func rightOrWrongAnwserCheck(sender: UIButton) {
     
     questionsAsked += 1
     
-    let correctAnswer = questionAndAnswer.answer
+    let correctAnswer = quiz.answer
     
     if (sender === oneButton &&  correctAnswer == "1") || (sender === twoButton && correctAnswer == "2") || (sender === threeButton &&  correctAnswer == "3") || (sender === fourButton &&  correctAnswer == "4") {
         correctQuestions += 1
