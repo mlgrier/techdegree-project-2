@@ -9,57 +9,56 @@
 import Foundation
 import GameKit
 
-struct Questions {
+struct Question {
     var question: String
     var answer: String
 }
 
-var quiz = Questions(question: "", answer: "")
+var quiz = Question(question: "", answer: "")
 var correctQuestions = 0
 var questionsAsked = 0
 var arrayOfIndex = [Int]()
 
-
-let questionsAndAnswers: [[String : String]] = [
-    ["Question": "What is 0 + 1", "Answer": "1"],
-    ["Question": "What is 1 + 1", "Answer": "2"],
-    ["Question": "What is 1 + 2", "Answer": "3"],
-    ["Question": "What is 1 + 3", "Answer": "4"],
-    ["Question": "What is 9 - 8", "Answer": "1"],
-    ["Question": "What is 12 - 10", "Answer": "2"],
-    ["Question": "What is 13 - 10", "Answer": "3"],
-    ["Question": "What is 14 - 10", "Answer": "4"],
-    ["Question": "What is 7 - 6", "Answer": "1"],
-    ["Question": "What is 22 - 20", "Answer": "2"],
-    ["Question": "What is 33 - 30", "Answer": "3"],
-    ["Question": "What is 100 - 96", "Answer": "4"],
-    ["Question": "What is 29 - 28", "Answer": "1"],
-    ["Question": "What is 8 - 6", "Answer": "2"],
-    ["Question": "What is 17 - 14", "Answer": "3"],
-    ["Question": "What is 48 - 44", "Answer": "4"]
+let quizQuestions = [
+    Question(question: "What is 0 + 1", answer: "1"),
+    Question(question: "What is 1 + 1", answer: "2"),
+    Question(question: "What is 1 + 2", answer: "3"),
+    Question(question: "What is 1 + 3", answer: "4"),
+    Question(question: "What is 9 - 8", answer: "1"),
+    Question(question: "What is 12 - 10", answer: "2"),
+    Question(question: "What is 13 - 10", answer: "3"),
+    Question(question: "What is 14 - 10", answer: "4"),
+    Question(question: "What is 7 - 6", answer: "1"),
+    Question(question: "What is 22 - 20", answer: "2"),
+    Question(question: "What is 33 - 30", answer: "3"),
+    Question(question: "What is 100 - 96", answer: "4"),
+    Question(question: "What is 29 - 28", answer: "1"),
+    Question(question: "What is 8 - 6", answer: "2"),
+    Question(question: "What is 17 - 14", answer: "3"),
+    Question(question: "What is 48 - 44", answer: "4")
 ]
 
-func questionAndAnswerGenerator() -> Questions {
+func questionAndAnswerGenerator() -> Question {
     
-    var question: String
+    let question: String
     let answer: String
     var indexOfSelectedQuestion: Int
     
     
     // Loop to check if index has been used
     repeat {
-        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: questionsAndAnswers.count)
+        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: quizQuestions.count)
     } while arrayOfIndex.contains(indexOfSelectedQuestion)
     
     // Add index to array
     arrayOfIndex.append(indexOfSelectedQuestion)
     
-    //NEED TO PULL THE QUESTION AND ANSWER FROM DICT THEN PASS TO STRUCT
+    //NEED TO PULL THE QUESTION AND ANSWER FROM ARRAY THEN PASS TO STRUCT
     
-    question = questionsAndAnswers[indexOfSelectedQuestion]["Question"] ?? "error"
-    answer = questionsAndAnswers[indexOfSelectedQuestion]["Answer"] ?? "error"
+    question = quizQuestions[indexOfSelectedQuestion].question
+    answer = quizQuestions[indexOfSelectedQuestion].answer
     
-    quiz = Questions(question: question, answer: answer)
+    quiz = Question(question: question, answer: answer)
     
     return quiz
     
