@@ -14,7 +14,6 @@ class ViewController: UIViewController {
     
     let questionsPerRound = 4
     
-    
     // MARK: - Outlets
     
     @IBOutlet weak var questionField: UILabel!

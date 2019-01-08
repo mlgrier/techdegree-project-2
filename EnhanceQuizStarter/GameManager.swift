@@ -9,15 +9,15 @@
 import Foundation
 import GameKit
 
-struct Question {
-    var question: String
-    var answer: String
-}
-
 var quiz = Question(question: "", answer: "")
 var correctQuestions = 0
 var questionsAsked = 0
 var arrayOfIndex = [Int]()
+
+struct Question {
+    var question: String
+    var answer: String
+}
 
 let quizQuestions = [
     Question(question: "What is 0 + 1", answer: "1"),
@@ -58,7 +58,7 @@ func questionAndAnswerGenerator() -> Question {
     question = quizQuestions[indexOfSelectedQuestion].question
     answer = quizQuestions[indexOfSelectedQuestion].answer
     
-     quiz = Question(question: question, answer: answer)
+    quiz = Question(question: question, answer: answer)
     
     return quiz
     
