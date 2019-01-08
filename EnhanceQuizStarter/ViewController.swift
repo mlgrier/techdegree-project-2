@@ -14,8 +14,6 @@ class ViewController: UIViewController {
     // MARK: - Properties
     
     let questionsPerRound = 4
-    var newIndexNumber = 0
-    var indexOfQuestion = 0
     
     // used a struct for the questions
     

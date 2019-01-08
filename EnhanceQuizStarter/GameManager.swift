@@ -58,7 +58,7 @@ func questionAndAnswerGenerator() -> Question {
     question = quizQuestions[indexOfSelectedQuestion].question
     answer = quizQuestions[indexOfSelectedQuestion].answer
     
-    quiz = Question(question: question, answer: answer)
+     quiz = Question(question: question, answer: answer)
     
     return quiz
     
