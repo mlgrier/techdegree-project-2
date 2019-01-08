@@ -15,8 +15,6 @@ class ViewController: UIViewController {
     
     let questionsPerRound = 4
     
-    // used a struct for the questions
-    
     
     // MARK: - Outlets
     
